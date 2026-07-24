@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Porras y Asociados | Despacho Jurídico</title>
+<meta name="description" content="Despacho Jurídico Porras y Asociados. Excelencia legal en Derecho Penal, Migratorio, Tributario, Familiar y Laboral.">
+
+<!-- ============================================================
+     FUENTES: Inter vía Google Fonts (tipografía sobria, sin serifa)
+============================================================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     TAILWIND CSS vía CDN
+============================================================= -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        },
+        colors: {
+          // Acento sobrio en tono bronce/oro apagado: único toque de color
+          // del diseño, reservado para detalles pequeños (hover, líneas, iconos).
+          accent: {
+            DEFAULT: '#9C7A45',
+            light: '#B79A6B',
+          },
+        },
+        letterSpacing: {
+          widest2: '0.25em',
+        },
+      },
+    },
+  };
+</script>
+
+<!-- ============================================================
+     ICONOS: Lucide Icons vía CDN (set minimalista de trazo fino)
+============================================================= -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+<style>
+  /* Fuente base y suavizado de texto */
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+  /* Animación sutil de aparición al hacer scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Respeta la preferencia del usuario de reducir movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* Línea inferior animada para los enlaces del menú */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0%;
+    height: 1px;
+    background-color: #111827;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Menú móvil: transición de altura */
+  #mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  #mobile-menu.open { max-height: 320px; }
+</style>
+</head>
+
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- ============================================================
+       NAVBAR — Fijo, blanco, con borde inferior muy fino al hacer scroll
+  ============================================================= -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-transparent transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Marca -->
+        <a href="#inicio" class="flex items-center gap-2.5 group">
+          <i data-lucide="scale" class="w-5 h-5 text-gray-900 stroke-[1.5]"></i>
+          <span class="text-lg font-bold tracking-tight text-gray-900">
+            Porras <span class="font-light text-gray-500">&amp; Asociados</span>
+          </span>
+        </a>
+
+        <!-- Menú de escritorio -->
+        <nav class="hidden md:flex items-center gap-10">
+          <a href="#inicio" class="nav-link text-sm text-gray-700 hover:text-gray-900">Inicio</a>
+          <a href="#especialidades" class="nav-link text-sm text-gray-700 hover:text-gray-900">Especialidades</a>
+          <a href="#nosotros" class="nav-link text-sm text-gray-700 hover:text-gray-900">Nosotros</a>
+          <a href="#contacto" class="nav-link text-sm text-gray-700 hover:text-gray-900">Contacto</a>
+        </nav>
+
+        <a href="https://wa.me/50587555995?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20asesor%C3%ADa%20legal." target="_blank" rel="noopener noreferrer" class="hidden md:inline-block bg-gray-900 text-white text-sm font-medium px-6 py-2.5 hover:bg-gray-800 transition-colors">
+          Solicitar Asesoría
+        </a>
+
+        <!-- Botón menú móvil -->
+        <button id="menu-toggle" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-gray-900">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Menú móvil desplegable -->
+      <nav id="mobile-menu" class="md:hidden flex flex-col gap-1 pb-6">
+        <a href="#inicio" class="py-3 text-sm text-gray-700 border-t border-gray-100">Inicio</a>
+        <a href="#especialidades" class="py-3 text-sm text-gray-700 border-t border-gray-100">Especialidades</a>
+        <a href="#nosotros" class="py-3 text-sm text-gray-700 border-t border-gray-100">Nosotros</a>
+        <a href="#contacto" class="py-3 text-sm text-gray-700 border-t border-gray-100">Contacto</a>
+        <a href="https://wa.me/50587555995?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20asesor%C3%ADa%20legal." target="_blank" rel="noopener noreferrer" class="mt-2 bg-gray-900 text-white text-sm font-medium text-center px-6 py-3">
+          Solicitar Asesoría
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================================
+         HERO — Titular directo, mucho aire, CTA sobrio
+    ============================================================= -->
+    <section id="inicio" class="relative pt-40 pb-28 lg:pt-56 lg:pb-40 px-6 lg:px-10">
+      <div class="max-w-5xl mx-auto">
+
+        <p class="reveal text-xs font-semibold tracking-widest2 uppercase text-accent mb-6">
+          Despacho Jurídico
+        </p>
+
+        <h1 class="reveal text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-gray-900 max-w-4xl">
+          Excelencia jurídica para decisiones que importan.
+        </h1>
+
+        <p class="reveal text-lg text-gray-600 mt-8 max-w-xl leading-relaxed">
+          Asesoría legal rigurosa y discreta para personas y empresas que exigen
+          precisión, criterio y resultados.
+        </p>
+
+        <div class="reveal mt-12 flex flex-col sm:flex-row gap-4">
+          <a href="https://wa.me/50587555995?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20asesor%C3%ADa%20legal." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-gray-900 text-white text-sm font-medium px-8 py-4 hover:bg-gray-800 transition-colors">
+            Solicitar Asesoría
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#especialidades" class="inline-flex items-center justify-center gap-2 border border-gray-300 text-gray-900 text-sm font-medium px-8 py-4 hover:border-gray-900 transition-colors">
+            Ver especialidades
+          </a>
+        </div>
+      </div>
+
+      <!-- Línea divisoria fina que cierra el hero -->
+      <div class="max-w-7xl mx-auto mt-24 lg:mt-32 border-t border-gray-100"></div>
+    </section>
+
+    <!-- ============================================================
+         ESPECIALIDADES — Grid de tarjetas sutiles (borde fino, sin sombra)
+    ============================================================= -->
+    <section id="especialidades" class="px-6 lg:px-10 py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto">
+
+        <div class="reveal max-w-2xl mb-16 lg:mb-20">
+          <p class="text-xs font-semibold tracking-widest2 uppercase text-accent mb-4">Áreas de práctica</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900">
+            Especialidades del despacho
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-gray-100 border border-gray-100">
+
+          <!-- Tarjeta 1 -->
+          <article class="reveal bg-white p-10 hover:bg-gray-50 transition-colors">
+            <i data-lucide="gavel" class="w-6 h-6 text-gray-900 stroke-[1.5] mb-6"></i>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Derecho Penal</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Defensa técnica y estratégica en todas las etapas del proceso penal, con un enfoque riguroso en la protección de sus derechos.
+            </p>
+          </article>
+
+          <!-- Tarjeta 2 -->
+          <article class="reveal bg-white p-10 hover:bg-gray-50 transition-colors">
+            <i data-lucide="plane" class="w-6 h-6 text-gray-900 stroke-[1.5] mb-6"></i>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Derecho Migratorio</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Acompañamiento integral en procesos de residencia, visados y regularización migratoria, en Nicaragua y en el extranjero.
+            </p>
+          </article>
+
+          <!-- Tarjeta 3 -->
+          <article class="reveal bg-white p-10 hover:bg-gray-50 transition-colors">
+            <i data-lucide="landmark" class="w-6 h-6 text-gray-900 stroke-[1.5] mb-6"></i>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Derecho Tributario</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Planificación y defensa fiscal para individuos y empresas, con estrategias que minimizan riesgos ante la autoridad tributaria.
+            </p>
+          </article>
+
+          <!-- Tarjeta 4 -->
+          <article class="reveal bg-white p-10 hover:bg-gray-50 transition-colors">
+            <i data-lucide="home" class="w-6 h-6 text-gray-900 stroke-[1.5] mb-6"></i>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Patrimonio Familiar</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Sucesiones, testamentos y protección patrimonial, diseñados para preservar el legado y el bienestar de su familia.
+            </p>
+          </article>
+
+          <!-- Tarjeta 5 -->
+          <article class="reveal bg-white p-10 hover:bg-gray-50 transition-colors">
+            <i data-lucide="briefcase" class="w-6 h-6 text-gray-900 stroke-[1.5] mb-6"></i>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">Derecho Laboral</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">
+              Representación de trabajadores y empleadores en materia contractual, disputas laborales y cumplimiento normativo.
+            </p>
+          </article>
+
+          <!-- Celda de cierre: invita a contactar -->
+          <article class="reveal bg-gray-900 p-10 flex flex-col justify-between">
+            <p class="text-sm text-gray-300 leading-relaxed">
+              ¿Su caso requiere una de estas áreas u otra especialidad legal?
+            </p>
+            <a href="#contacto" class="inline-flex items-center gap-2 text-white text-sm font-medium mt-6 group">
+              Conversemos
+              <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         NOSOTROS / CONFIANZA — Texto breve + cifras discretas
+    ============================================================= -->
+    <section id="nosotros" class="bg-gray-50 px-6 lg:px-10 py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+
+        <div class="reveal lg:col-span-7">
+          <p class="text-xs font-semibold tracking-widest2 uppercase text-accent mb-4">Nuestro compromiso</p>
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 leading-tight mb-8">
+            Cada caso recibe la misma exigencia: la de un asunto propio.
+          </h2>
+          <p class="text-gray-600 leading-relaxed text-base">
+            En Porras &amp; Asociados entendemos que detrás de cada expediente hay una persona,
+            una familia o una empresa que necesita certeza. Combinamos criterio técnico,
+            discreción absoluta y comunicación directa para acompañar a nuestros clientes
+            en los momentos donde más se necesita claridad legal.
+          </p>
+        </div>
+
+        <div class="reveal lg:col-span-5 grid grid-cols-2 gap-x-8 gap-y-10">
+          <div>
+            <p class="text-4xl font-semibold text-gray-900">18+</p>
+            <p class="text-sm text-gray-500 mt-2">Años de experiencia</p>
+          </div>
+          <div>
+            <p class="text-4xl font-semibold text-gray-900">500+</p>
+            <p class="text-sm text-gray-500 mt-2">Casos resueltos</p>
+          </div>
+          <div>
+            <p class="text-4xl font-semibold text-gray-900">5</p>
+            <p class="text-sm text-gray-500 mt-2">Áreas de práctica</p>
+          </div>
+          <div>
+            <p class="text-4xl font-semibold text-gray-900">100%</p>
+            <p class="text-sm text-gray-500 mt-2">Confidencialidad</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACTO — Llamado a la acción final
+    ============================================================= -->
+    <section id="contacto" class="px-6 lg:px-10 py-24 lg:py-32">
+      <div class="max-w-7xl mx-auto border-t border-gray-100 pt-24 lg:pt-32">
+        <div class="max-w-2xl">
+          <p class="reveal text-xs font-semibold tracking-widest2 uppercase text-accent mb-4">Contacto</p>
+          <h2 class="reveal text-3xl sm:text-4xl font-semibold tracking-tight text-gray-900 mb-6">
+            Hablemos sobre su caso.
+          </h2>
+          <p class="reveal text-gray-600 leading-relaxed mb-10">
+            Escríbanos y un miembro de nuestro equipo se pondrá en contacto con usted
+            en menos de 24 horas para agendar una primera consulta.
+          </p>
+          <a href="https://wa.me/50588887777?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20asesor%C3%ADa%20legal." target="_blank" rel="noopener noreferrer" class="reveal inline-flex items-center justify-center gap-2 bg-gray-900 text-white text-sm font-medium px-8 py-4 hover:bg-gray-800 transition-colors">
+            Solicitar Asesoría
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER — Fondo oscuro, contacto y derechos de autor
+  ============================================================= -->
+  <footer class="bg-gray-900 text-gray-300 px-6 lg:px-10 py-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-gray-800">
+
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <i data-lucide="scale" class="w-5 h-5 text-white stroke-[1.5]"></i>
+            <span class="text-white font-bold tracking-tight">Porras &amp; Asociados</span>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed max-w-xs">
+            Despacho jurídico dedicado a la excelencia legal, la discreción y el
+            servicio al cliente.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold tracking-widest2 uppercase text-gray-500 mb-4">Contacto</p>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="mail" class="w-4 h-4 text-gray-500"></i>
+              <a href="mailto:sdinorahporras@gmail.com" class="hover:text-white transition-colors">sdinorahporras@gmail.com</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="phone" class="w-4 h-4 text-gray-500"></i>
+              <a href="tel:+50587555995" class="hover:text-white transition-colors">+505 8755 5995</a>
+            </li>
+            <li class="flex items-center gap-2.5">
+              <i data-lucide="map-pin" class="w-4 h-4 text-gray-500"></i>
+              <span>Managua, Nicaragua</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs font-semibold tracking-widest2 uppercase text-gray-500 mb-4">Navegación</p>
+          <ul class="space-y-3 text-sm">
+            <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+            <li><a href="#especialidades" class="hover:text-white transition-colors">Especialidades</a></li>
+            <li><a href="#nosotros" class="hover:text-white transition-colors">Nosotros</a></li>
+            <li><a href="#contacto" class="hover:text-white transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="text-xs text-gray-500 pt-8">
+        © 2026 Despacho Jurídico Porras &amp; Asociados. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       BOTÓN FLOTANTE DE WHATSAPP
+  ============================================================= -->
+  <a
+    href="https://wa.me/50588887777?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20una%20asesor%C3%ADa%20legal."
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+    class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] shadow-lg hover:bg-[#1EBE5A] hover:scale-105 transition-all duration-300"
+  >
+    <svg viewBox="0 0 32 32" class="w-7 h-7 fill-white" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.362.687 4.564 1.872 6.417L4 29l7.77-1.84A11.94 11.94 0 0 0 16.001 27C22.628 27 28 21.627 28 15S22.628 3 16.001 3zm0 21.818c-1.94 0-3.75-.53-5.303-1.452l-.38-.226-4.61 1.092 1.117-4.49-.248-.393A9.77 9.77 0 0 1 5.182 15c0-5.964 4.855-10.818 10.819-10.818S26.818 9.036 26.818 15 21.964 24.818 16.001 24.818zm5.98-8.146c-.328-.164-1.94-.957-2.24-1.066-.3-.11-.518-.164-.737.164-.219.328-.846 1.066-1.037 1.285-.191.219-.383.246-.71.082-.328-.164-1.385-.51-2.638-1.628-.975-.87-1.633-1.944-1.824-2.272-.191-.328-.02-.505.144-.668.148-.148.328-.383.492-.575.164-.191.219-.328.328-.547.109-.219.055-.41-.027-.575-.082-.164-.737-1.777-1.01-2.434-.266-.64-.537-.553-.737-.563l-.628-.011c-.219 0-.575.082-.876.41-.3.328-1.147 1.121-1.147 2.734s1.174 3.172 1.338 3.391c.164.219 2.31 3.527 5.598 4.945.782.338 1.393.54 1.868.69.785.25 1.5.215 2.065.13.63-.094 1.94-.793 2.213-1.559.273-.766.273-1.422.191-1.559-.082-.137-.3-.219-.628-.383z"/>
+    </svg>
+  </a>
+
+  <!-- ============================================================
+       SCRIPTS
+  ============================================================= -->
+  <script>
+    // Inicializa los iconos de Lucide una vez cargado el script
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+
+    // Menú móvil: abrir / cerrar
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen);
+      menuToggle.innerHTML = isOpen
+        ? '<i data-lucide="x" class="w-6 h-6"></i>'
+        : '<i data-lucide="menu" class="w-6 h-6"></i>';
+      if (window.lucide) lucide.createIcons();
+    });
+
+    // Cierra el menú móvil al pulsar un enlace
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+        if (window.lucide) lucide.createIcons();
+      });
+    });
+
+    // Navbar: añade borde inferior sutil al hacer scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 12) {
+        navbar.classList.add('border-gray-100', 'shadow-[0_1px_0_0_rgba(0,0,0,0.02)]');
+      } else {
+        navbar.classList.remove('border-gray-100', 'shadow-[0_1px_0_0_rgba(0,0,0,0.02)]');
+      }
+    });
+
+    // Animación de aparición suave al hacer scroll (Intersection Observer)
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
